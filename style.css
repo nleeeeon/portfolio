@@ -231,6 +231,13 @@ nav a:hover { background: var(--primary-dark); }
   background: #f3f3f3;
 }
 
+.demo-note{
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
 /* ===== 静止画ギャラリー（リンクの下に来る前提で余白調整） ===== */
 .media-gallery {
   display: flex;
