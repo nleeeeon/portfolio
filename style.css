@@ -1,0 +1,352 @@
+:root {
+  --primary: #333333;
+  --primary-dark: #1f1f1f;
+  --light: #f5f5f5;
+  --text: #212121;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #ffffff;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { font-weight: 600; margin-bottom: 0.5rem; }
+
+section { padding: 3rem 1.5rem; max-width: 960px; margin: auto; }
+.bg-light { background: var(--light); }
+
+nav { background: var(--primary); }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; }
+nav a { display: block; padding: 0.75rem 1rem; color: #ffffff; font-size: 0.9rem; }
+nav a:hover { background: var(--primary-dark); }
+
+.hero {
+  background: linear-gradient(135deg, #999999 0%, #2a2a2a 100%);
+  color: #ffffff;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.hero h1 { font-size: 2.75rem; letter-spacing: -1px; }
+.tagline { margin: 0.5rem 0 1.5rem; font-size: 1.1rem; color: #e0e0e0; }
+
+.btn-cta {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-cta:hover { background: #ebebeb; }
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 0;
+}
+.pill-list li {
+  list-style: none;
+  background: #e0e0e0;
+  color: #3d3d3d;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+/* ===== 成果物：1列（方針C） ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  border: 1px solid #dddddd;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.card h3 { margin-bottom: 0.25rem; }
+
+/* ===== 上部：説明とGIFの配置 ===== */
+.project-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin-top: 0.75rem;
+}
+@media (min-width: 860px) {
+  .project-top {
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 1.5rem;
+  }
+}
+
+/* 説明 */
+.project-desc {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.project-lead {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #333;
+}
+
+.project-points {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: #555;
+}
+.project-points li { margin: 0.2rem 0; }
+.project-points strong { color: #333; }
+
+/* 技術タグ */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.1rem;
+}
+.project-tech .tech {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 0.78rem;
+  color: #444;
+}
+
+/* ===== 詳細（ボタン化して押せることを明確に） ===== */
+.project-details {
+  padding-top: 0.2rem;
+}
+
+.project-details summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  user-select: none;
+
+  border: 1px solid #d7d7d7;
+  background: #f6f6f6;
+  border-radius: var(--radius);
+  padding: 0.5rem 0.85rem;
+
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+
+  list-style: none;
+}
+.project-details summary::-webkit-details-marker { display: none; }
+
+.project-details summary::after {
+  content: "▼";
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.project-details summary:hover {
+  background: #ededed;
+  text-decoration: none;
+}
+
+.project-details[open] summary {
+  background: #e9e9e9;
+}
+.project-details[open] summary::after {
+  content: "▲";
+}
+
+.details-body {
+  margin-top: 0.75rem;
+  border-top: 1px solid #eee;
+  padding-top: 0.75rem;
+
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: #555;
+}
+
+
+/* 右カラム内で、GIF用の固定枠を作る */
+.project-media {
+  display: grid;
+  grid-template-rows: 240px auto; /* ← GIF枠 + ギャラリー（画像枚数に影響されない） */
+  gap: 0.85rem;
+}
+
+/* GIFは固定枠にぴったり収める（切らない） */
+.media-main {
+  width: 100%;
+  height: 240px;       /* ← ここが統一サイズ（中間くらいに設定） */
+  max-height: none;    /* 既存のmax-heightを無効化 */
+  aspect-ratio: auto;  /* 既存のaspect-ratioを無効化 */
+  object-fit: contain; /* UIが切れない */
+  background: #fff;
+}
+@media (min-width: 860px) {
+  .media-main { max-height: 220px; }
+}
+
+/* 成果物へのアクセス */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.btn-link {
+  display: inline-block;
+  border: 1px solid #dddddd;
+  border-radius: var(--radius);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+  background: #ffffff;
+}
+.btn-link:hover {
+  text-decoration: none;
+  background: #f3f3f3;
+}
+
+/* ===== 静止画ギャラリー（リンクの下に来る前提で余白調整） ===== */
+.media-gallery {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.media-gallery figure {
+  flex: 0 0 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.media-gallery img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.media-gallery img:hover { transform: scale(1.03); }
+
+.media-gallery figcaption {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: #555;
+}
+
+/* フッター */
+footer {
+  background: #1b1b1b;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+/* ===== Lightbox ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.lightbox-caption {
+  color: #ddd;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  max-width: 80%;
+  line-height: 1.6;
+}
+
+.lightbox-nav span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 0 1rem;
+  user-select: none;
+}
+
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+
+/* 右カラム（GIF下）に置くギャラリー専用 */
+.media-gallery-inmedia {
+  margin-top: 0.85rem;
+  border-top: 1px solid #eee;
+  padding-top: 0.85rem;
+}
+
+/* 右カラム内だと幅が狭いので、サムネを少し小さめに */
+.media-gallery-inmedia figure {
+  flex: 0 0 130px;
+}
+
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.1rem; }
+  nav a { padding: 0.6rem 0.8rem; }
+  .lightbox-caption { font-size: 1rem; }
+  .media-gallery-inmedia figure {
+    flex: 0 0 140px;
+  }
+}
